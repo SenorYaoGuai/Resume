@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang ="en">
+<head>
+  <meta charset="utf-8">
+  <title>Other Work</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" type="text/css" href="mystylesheet.css">
+  <script src="jquery-3.4.1.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Bootstrap Stylesheet-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="website.css"><!-- Last Always -->
+
+</head>
+   <body>
+      <header>
+          <h1 class="text-center">Other Work</h1>
+       </header>
+        
+
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="resume.html">Resume</a></li>
+            <li class="nav-item"><a class="nav-link" href="photo.html">Photogallary</a></li>
+            <li class="nav-item"><a class="nav-link" href="other.html">Other Work</a></li>      
+        </ul>
+    
+    </div>
+</nav>
+
+
+<main>
+  <div class="container-fluid">
+
+   
+    <!--The nobullets class removes the bullets from the li items.-->
+    <ul class="row nobullets">
+      
+      <li class="col-lg-4 col-md-3 col-sm-6 col-xs-12"><img class="img-fluid boxstyle" height="480px" src="1.png" width="640px"></li>
+      <li class="col-lg-4 col-md-3 col-sm-6 col-xs-12"><img class="img-fluid boxstyle" height="480px" src="2.png" width="640px"></li>
+      <li class="col-lg-4 col-md-3 col-sm-6 col-xs-12"><img class="img-fluid boxstyle" height="480px" src="3.png" width="640px"></li>
+      <li class="col-lg-4 col-md-3 col-sm-6 col-xs-12"><img class="img-fluid boxstyle" height="480px" src="4.png" width="640px"></li>
+      <li class="col-lg-4 col-md-3 col-sm-6 col-xs-12"><img class="img-fluid boxstyle" height="480px" src="5.png" width="640px"></li>
+      <li class="col-lg-4 col-md-3 col-sm-6 col-xs-12"><img class="img-fluid boxstyle" height="480px" src="6.png" width="640px"></li>
+      <li class="col-lg-4 col-md-3 col-sm-6 col-xs-12"><img class="img-fluid boxstyle" height="480px" src="7.jpg" width="640px"></li>
+      <li class="col-lg-4 col-md-3 col-sm-6 col-xs-12"><img class="img-fluid boxstyle" height="480px" src="8.jpg" width="640px"></li>
+      <li class="col-lg-4 col-md-3 col-sm-6 col-xs-12"><img class="img-fluid boxstyle" height="480px" src="9.jpg" width="640px"></li>
+      <li class="col-lg-4 col-md-3 col-sm-6 col-xs-12"><img class="img-fluid boxstyle" height="480px" src="10.jpg" width="640px"></li>
+      <li class="col-lg-4 col-md-3 col-sm-6 col-xs-12"><img class="img-fluid boxstyle" height="480px" src="11.jpg" width="640px"></li>
+      <li class="col-lg-4 col-md-3 col-sm-6 col-xs-12"><img class="img-fluid boxstyle" height="480px" src="12.png" width="640px"></li>
+    </ul>
+
+    <div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="myModal" role="dialog" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body"></div>
+        </div>
+
+      </div>
+ 
+    </div>
+
+  </div>
+
+</main>
+<footer>
+      <small>&copy; Tristan Dallenbach</small> <i class="fa fa-reddit-alien" aria-hidden="true"></i>
+
+      
+  </footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+   
+
+    <script>
+                 $(document).ready(function(){        
+                     $('li img').on('click',function(){
+                         var src = $(this).attr('src');
+                         var img = '<img src="' + src + '" class="img-fluid"/>';
+
+                         var index = $(this).parent('li').index();   
+                         
+                         var html = '';
+                         html += img;                
+                         html += '<div style="height:25px;clear:both;display:block;">';
+                         html += '<a class="controls next" href="'+ (index+2) + '">NEXT<\/a>';
+                         html += '<a class="controls previous" href="' + (index) + '">PREVIOUS<\/a>';
+                         html += '<\/div>';
+                         
+                         $('#myModal').modal();
+                         $('#myModal').on('shown.bs.modal', function(){
+                             $('#myModal .modal-body').html(html);
+                       
+                             $('a.controls').trigger('click');
+                         })
+                         $('#myModal').on('hidden.bs.modal', function(){
+                             $('#myModal .modal-body').html('');
+                         });
+                         
+                         
+                    });
+                 
+                 })
+                 
+
+                 $(document).on('click', 'a.controls', function(){
+                     var index = $(this).attr('href');
+                     var src = $('ul.row li:nth-child('+ index +') img').attr('src');             
+                     
+                     $('.modal-body img').attr('src', src);
+                     
+                     var newPrevIndex = parseInt(index) - 1; 
+                     var newNextIndex = parseInt(newPrevIndex) + 2; 
+                     
+                     if($(this).hasClass('previous')){               
+                         $(this).attr('href', newPrevIndex); 
+                         $('a.next').attr('href', newNextIndex);
+                     }else{
+                         $(this).attr('href', newNextIndex); 
+                         $('a.previous').attr('href', newPrevIndex);
+                     }
+                     
+                     var total = $('ul.row li').length + 1; 
+                   
+                     if(total === newNextIndex){
+                         $('a.next').hide();
+                     }else{
+                         $('a.next').show()
+                     }            
+                   
+                     if(newPrevIndex === 0){
+                         $('a.previous').hide();
+                     }else{
+                         $('a.previous').show()
+                     }
+                     
+                     
+                     return false;
+                 });          
+    </script>
+</body>
+</html>

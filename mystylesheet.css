@@ -1,0 +1,29 @@
+@import
+<style>
+@import url('https://fonts.googleapis.com/css?family=Boogaloo|Indie+Flower&display=swap');
+</style>
+
+
+
+
+
+
+body,{
+font-family: 'Boogaloo', cursive;	
+}
+
+main{
+	max-width: 900px;
+	margin:0 auto;
+}
+
+
+h1{
+font-family: 'Indie Flower';	
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
